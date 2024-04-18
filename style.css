@@ -120,9 +120,6 @@ body {
     margin-right: 0.5rem;
   }
 
-  .controls__btn--save {
-    display: none;
-  }
 
   .controls__saving-disabled {
     width: 100%;
