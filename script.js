@@ -230,8 +230,6 @@ saveBtn.addEventListener("click", () => {
             // restore the social image styles
             socialImageSVG.style.width = "100%";
             socialImageSVG.style.height = "auto";
-            socialImageSVG.setAttribute("width", "");
-            socialImageSVG.setAttribute("height", "");
 
             FileSaver.saveAs(blob, "generative-social-image.png");
         });
@@ -239,32 +237,33 @@ saveBtn.addEventListener("click", () => {
 });
 
 document.getElementById('plus').addEventListener('click', function() {
-  document.getElementById('fileInput').click();
+    document.getElementById('fileInput').click();
 });
 
 document.getElementById('fileInput').addEventListener('change', function() {
-  const file = this.files[0];
-  const reader = new FileReader();
+    const file = this.files[0];
+    const reader = new FileReader();
 
-  reader.onload = function(e) {
-    const image = new Image();
-    image.src = e.target.result;
+    reader.onload = function(e) {
+        const image = new Image();
+        image.src = e.target.result;
 
-    image.onload = function() {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
+        image.onload = function() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
 
-      canvas.width = 150; // Set this to the circle width
-      canvas.height = 150; // Set this to the circle height
+            canvas.width = 150; // Set this to the circle width
+            canvas.height = 150; // Set this to the circle height
 
-      ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-      document.getElementById('circle').style.backgroundImage = `url(${canvas.toDataURL()})`;
-      document.getElementById('circle').style.backgroundSize = 'cover';
-      document.getElementById('circle').style.backgroundPosition = 'center';
+            document.getElementById('circle').style.backgroundImage = `url(${canvas.toDataURL()})`;
+            document.getElementById('plus').style.display = "none";
+            document.getElementById('circle').style.backgroundSize = 'cover';
+            document.getElementById('circle').style.backgroundPosition = 'center';
+        };
     };
-  };
 
-  reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
 });
 
