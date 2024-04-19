@@ -24,9 +24,10 @@ body {
 
 .wrapper {
   width: 100%;
+ /* height:800px; */
   max-width: 63rem;
   min-width: 20rem;
-  margin: 0 auto;
+  /* margin: 0 auto;*/
   overflow: hidden;
 }
 
